@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {withFormik, Form} from "formik";
+import * as Yup from 'yup';
+import axios from 'axios'
+
 import Name from './FormComponents/Name';
 import Email from './FormComponents/Email';
 import Password from './FormComponents/Password';
@@ -12,7 +15,7 @@ const FormWrapper = styled.div`
 `;
 
 const OnboardForm = (props) => {
-    const {values, errors, touched, status} = props;
+
     return (
         <FormWrapper>
             <Form>
@@ -27,8 +30,28 @@ const OnboardForm = (props) => {
 };
 
 const FormikOnboardForm = withFormik({
-    mapPropsToValues ({}) {
-        return {};
+    mapPropsToValues ({name, email, password, tos}) {
+        return {
+            name: name || '',
+            email: email || '',
+            password: password || '',
+            tos: tos || false,
+        };
+    },
+    validationSchema: Yup.object().shape({
+        name: Yup.string().required(),
+        email: Yup.string().required(),
+        password: Yup.string().required(),
+        tos: Yup.string().required(),
+    }),
+    handleSubmit (values, {setStatus}) {
+        axios.post("https://reqres.in/api/users/", values)
+            .then(response => {
+                setStatus(response.data)
+                console.log(response)
+            })
+            .catch(error => console.log(error.response))
+            .finally(values.resetForm)
     }
 })(OnboardForm);
 
