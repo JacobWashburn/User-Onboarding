@@ -7,10 +7,10 @@ const NameDiv = styled.div`
 `;
 
 
-const Name = () => {
+const Name = (props) => {
     return (
         <NameDiv>
-            <Field/>
+            <Field required type='text' name='name' placeholder='Name'/>
         </NameDiv>
     );
 };
