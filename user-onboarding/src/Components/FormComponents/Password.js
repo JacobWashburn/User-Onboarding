@@ -9,7 +9,7 @@ const PasswordDiv = styled.div`
 const Password = (props) => {
     return(
         <PasswordDiv>
-            <Field required type='password' name='password' placeholder='Password'/>
+            <Field type='password' name='password' placeholder='Password'/>
         </PasswordDiv>
     )
 }

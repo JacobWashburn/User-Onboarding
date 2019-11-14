@@ -10,7 +10,7 @@ const EmailDiv = styled.div`
 const Email = (props) => {
     return(
         <EmailDiv>
-            <Field required type='email' name='email' placeholder='Email'/>
+            <Field type='email' name='email' placeholder='Email'/>
         </EmailDiv>
     )
 }

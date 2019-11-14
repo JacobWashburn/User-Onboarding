@@ -10,7 +10,7 @@ const NameDiv = styled.div`
 const Name = (props) => {
     return (
         <NameDiv>
-            <Field required type='text' name='name' placeholder='Name'/>
+            <Field type='text' name='name' placeholder='Name'/>
         </NameDiv>
     );
 };

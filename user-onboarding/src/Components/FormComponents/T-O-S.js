@@ -13,8 +13,8 @@ const TOS = (props) => {
     return(
         <TOSdiv>
             <ChBoxLabel>
-                Terms Of Service:
-            <Field required type='checkbox' checked={false}/>
+                Accept Our Terms Of Service:
+            <Field type='checkbox' name='tos'/>
             </ChBoxLabel>
         </TOSdiv>
     )
